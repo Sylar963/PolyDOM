@@ -101,14 +101,16 @@ export const TradingChart: React.FC<TradingChartProps> = ({ data, symbol }) => {
       
       return {
         time: timestamp,
-        open: d.open,
-        high: d.high,
-        low: d.low,
-        close: d.close,
-        volume: d.volume,
+        open: Number(d.open),
+        high: Number(d.high),
+        low: Number(d.low),
+        close: Number(d.close),
+        volume: Number(d.volume),
         isUp: d.isUp
       };
-    });
+    }).filter(d => 
+      !isNaN(d.open) && !isNaN(d.high) && !isNaN(d.low) && !isNaN(d.close) && !isNaN(d.time as number)
+    );
 
     // Sort data by time
     chartData.sort((a, b) => (a.time as number) - (b.time as number));
@@ -118,31 +120,33 @@ export const TradingChart: React.FC<TradingChartProps> = ({ data, symbol }) => {
       index === 0 || d.time !== self[index - 1].time
     );
 
-    seriesRef.current.setData(uniqueChartData.map(d => ({
-      time: d.time,
-      open: d.open,
-      high: d.high,
-      low: d.low,
-      close: d.close,
-    })));
+    if (uniqueChartData.length > 0) {
+      seriesRef.current.setData(uniqueChartData.map(d => ({
+        time: d.time,
+        open: d.open,
+        high: d.high,
+        low: d.low,
+        close: d.close,
+      })));
 
-    volumeSeriesRef.current.setData(uniqueChartData.map(d => ({
-      time: d.time,
-      value: d.volume,
-      color: d.isUp ? 'rgba(76, 175, 80, 0.5)' : 'rgba(229, 57, 53, 0.5)',
-    })));
+      volumeSeriesRef.current.setData(uniqueChartData.map(d => ({
+        time: d.time,
+        value: d.volume,
+        color: d.isUp ? 'rgba(76, 175, 80, 0.5)' : 'rgba(229, 57, 53, 0.5)',
+      })));
 
-    // Set the last price line to be red like in the image
-    const lastClose = uniqueChartData[uniqueChartData.length - 1].close;
-    if (typeof lastClose === 'number' && !isNaN(lastClose)) {
-      seriesRef.current.createPriceLine({
-        price: lastClose,
-        color: '#e53935',
-        lineWidth: 1,
-        lineStyle: 0,
-        axisLabelVisible: true,
-        title: '',
-      });
+      // Set the last price line to be red like in the image
+      const lastClose = uniqueChartData[uniqueChartData.length - 1].close;
+      if (typeof lastClose === 'number' && !isNaN(lastClose)) {
+        seriesRef.current.createPriceLine({
+          price: lastClose,
+          color: '#e53935',
+          lineWidth: 1,
+          lineStyle: 0,
+          axisLabelVisible: true,
+          title: '',
+        });
+      }
     }
 
   }, [data]);
