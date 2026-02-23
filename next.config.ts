@@ -19,6 +19,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/gamma/:path*',
+        destination: 'https://gamma-api.polymarket.com/:path*',
+      },
+      {
+        source: '/api/clob/:path*',
+        destination: 'https://clob.polymarket.com/:path*',
+      },
+    ];
+  },
   output: 'standalone',
   transpilePackages: ['motion'],
   webpack: (config, {dev}) => {

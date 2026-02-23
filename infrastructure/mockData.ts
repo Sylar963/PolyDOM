@@ -1,4 +1,4 @@
-import { PriceLevel, Candle } from '../domain/types';
+import { PriceLevel, Candle, Tick } from '../domain/types';
 
 export const ethUsdtSwapPrices: PriceLevel[] = [
   { p: '1,976.8', s: '3,244', h: false, bar: 10 },
@@ -54,21 +54,27 @@ export const ethUsdtSwapPrices: PriceLevel[] = [
   { p: '1,966.8', s: '-', h: false, bar: 0 },
 ];
 
-// Add working orders, controls, and bubbles
-ethUsdtSwapPrices[18].wo1 = { size: '842', active: true };
-ethUsdtSwapPrices[18].wo2 = { size: '385', active: false };
-ethUsdtSwapPrices[19].wo1 = { size: '437', active: false };
-ethUsdtSwapPrices[19].wo2 = { size: '4,289', active: true };
-ethUsdtSwapPrices[20].wo1 = { size: '465', active: false };
-ethUsdtSwapPrices[20].wo2 = { size: '1,791', active: false };
-ethUsdtSwapPrices[20].bubbles = [{ size: '4', isBuy: false }, { size: '21', isBuy: false }, { size: '2', isBuy: false }, { size: '20', isBuy: false }];
-ethUsdtSwapPrices[21].wo1 = { size: '1,071', active: true };
-ethUsdtSwapPrices[21].wo2 = { size: '4,591', active: true };
-ethUsdtSwapPrices[21].bubbles = [{ size: '17', isBuy: true }];
-ethUsdtSwapPrices[22].wo2 = { size: '1,394', active: false };
-ethUsdtSwapPrices[23].wo2 = { size: '2,359', active: false };
-ethUsdtSwapPrices[24].wo2 = { size: '407', active: false };
-ethUsdtSwapPrices[25].wo2 = { size: '231', active: false };
+// Add footprints, controls, and bubbles
+ethUsdtSwapPrices[18].fp1 = { volume: '842', active: true };
+ethUsdtSwapPrices[18].fp2 = { volume: '385', active: false };
+ethUsdtSwapPrices[19].fp1 = { volume: '437', active: false };
+ethUsdtSwapPrices[19].fp2 = { volume: '4,289', active: true };
+ethUsdtSwapPrices[20].fp1 = { volume: '465', active: false };
+ethUsdtSwapPrices[20].fp2 = { volume: '1,791', active: false };
+ethUsdtSwapPrices[21].fp1 = { volume: '1,071', active: true };
+ethUsdtSwapPrices[21].fp2 = { volume: '4,591', active: true };
+ethUsdtSwapPrices[22].fp2 = { volume: '1,394', active: false };
+ethUsdtSwapPrices[23].fp2 = { volume: '2,359', active: false };
+ethUsdtSwapPrices[24].fp2 = { volume: '407', active: false };
+ethUsdtSwapPrices[25].fp2 = { volume: '231', active: false };
+
+export const ethUsdtSwapTicks: Tick[] = [
+  { price: '1,972.6', size: '17', isBuy: true, time: 1 },
+  { price: '1,972.8', size: '4', isBuy: false, time: 2 },
+  { price: '1,972.8', size: '21', isBuy: false, time: 3 },
+  { price: '1,972.8', size: '2', isBuy: false, time: 4 },
+  { price: '1,972.8', size: '20', isBuy: false, time: 5 },
+];
 
 export const ethUsdtPrices: PriceLevel[] = [
   { p: '1,974.80', s: '2.3421', bar: 10 },
@@ -124,46 +130,51 @@ export const ethUsdtPrices: PriceLevel[] = [
   { p: '1,972.30', s: '5.4904', bar: 23 },
 ];
 
-ethUsdtPrices[13].wo1 = { size: '0.2156', active: false };
-ethUsdtPrices[14].wo1 = { size: '0.0162', active: false };
-ethUsdtPrices[15].wo1 = { size: '0.2537', active: false };
-ethUsdtPrices[16].wo1 = { size: '0.0336', active: false };
-ethUsdtPrices[17].wo1 = { size: '0.0168', active: false };
-ethUsdtPrices[18].wo1 = { size: '0.9542', active: true };
-ethUsdtPrices[19].wo1 = { size: '0.0159', active: false };
-ethUsdtPrices[20].wo1 = { size: '0.2089', active: false };
-ethUsdtPrices[21].wo1 = { size: '0.0005', active: false };
-ethUsdtPrices[22].wo1 = { size: '1.0002', active: false };
-ethUsdtPrices[23].wo1 = { size: '1.8282', active: true };
+ethUsdtPrices[13].fp1 = { volume: '0.2156', active: false };
+ethUsdtPrices[14].fp1 = { volume: '0.0162', active: false };
+ethUsdtPrices[15].fp1 = { volume: '0.2537', active: false };
+ethUsdtPrices[16].fp1 = { volume: '0.0336', active: false };
+ethUsdtPrices[17].fp1 = { volume: '0.0168', active: false };
+ethUsdtPrices[18].fp1 = { volume: '0.9542', active: true };
+ethUsdtPrices[19].fp1 = { volume: '0.0159', active: false };
+ethUsdtPrices[20].fp1 = { volume: '0.2089', active: false };
+ethUsdtPrices[21].fp1 = { volume: '0.0005', active: false };
+ethUsdtPrices[22].fp1 = { volume: '1.0002', active: false };
+ethUsdtPrices[23].fp1 = { volume: '1.8282', active: true };
 
-ethUsdtPrices[15].wo2 = { size: '0.0993', active: false };
-ethUsdtPrices[16].wo2 = { size: '0.2078', active: false };
-ethUsdtPrices[17].wo2 = { size: '1.3368', active: false };
-ethUsdtPrices[18].wo2 = { size: '1.2358', active: false };
-ethUsdtPrices[19].wo2 = { size: '0.6193', active: false };
-ethUsdtPrices[20].wo2 = { size: '1.7435', active: false };
-ethUsdtPrices[21].wo2 = { size: '0.5867', active: false };
-ethUsdtPrices[22].wo2 = { size: '0.1965', active: false };
-ethUsdtPrices[23].wo2 = { size: '15.9575', active: true };
-ethUsdtPrices[24].wo2 = { size: '0.9776', active: false };
-ethUsdtPrices[25].wo2 = { size: '0.2748', active: false };
-ethUsdtPrices[26].wo2 = { size: '0.0466', active: false };
-ethUsdtPrices[27].wo2 = { size: '0.0075', active: false };
-ethUsdtPrices[28].wo2 = { size: '3.5125', active: false };
-ethUsdtPrices[29].wo2 = { size: '0.0211', active: false };
-ethUsdtPrices[30].wo2 = { size: '2.9293', active: false };
-ethUsdtPrices[31].wo2 = { size: '0.2572', active: false };
-ethUsdtPrices[32].wo2 = { size: '0.0715', active: false };
-ethUsdtPrices[33].wo2 = { size: '0.0165', active: false };
-ethUsdtPrices[34].wo2 = { size: '0.2635', active: false };
-ethUsdtPrices[35].wo2 = { size: '0.0001', active: false };
-ethUsdtPrices[36].wo2 = { size: '1.6021', active: false };
-ethUsdtPrices[37].wo2 = { size: '0.5392', active: false };
-ethUsdtPrices[38].wo2 = { size: '0.0372', active: false };
-ethUsdtPrices[39].wo2 = { size: '8.3983', active: true };
+ethUsdtPrices[15].fp2 = { volume: '0.0993', active: false };
+ethUsdtPrices[16].fp2 = { volume: '0.2078', active: false };
+ethUsdtPrices[17].fp2 = { volume: '1.3368', active: false };
+ethUsdtPrices[18].fp2 = { volume: '1.2358', active: false };
+ethUsdtPrices[19].fp2 = { volume: '0.6193', active: false };
+ethUsdtPrices[20].fp2 = { volume: '1.7435', active: false };
+ethUsdtPrices[21].fp2 = { volume: '0.5867', active: false };
+ethUsdtPrices[22].fp2 = { volume: '0.1965', active: false };
+ethUsdtPrices[23].fp2 = { volume: '15.9575', active: true };
+ethUsdtPrices[24].fp2 = { volume: '0.9776', active: false };
+ethUsdtPrices[25].fp2 = { volume: '0.2748', active: false };
+ethUsdtPrices[26].fp2 = { volume: '0.0466', active: false };
+ethUsdtPrices[27].fp2 = { volume: '0.0075', active: false };
+ethUsdtPrices[28].fp2 = { volume: '3.5125', active: false };
+ethUsdtPrices[29].fp2 = { volume: '0.0211', active: false };
+ethUsdtPrices[30].fp2 = { volume: '2.9293', active: false };
+ethUsdtPrices[31].fp2 = { volume: '0.2572', active: false };
+ethUsdtPrices[32].fp2 = { volume: '0.0715', active: false };
+ethUsdtPrices[33].fp2 = { volume: '0.0165', active: false };
+ethUsdtPrices[34].fp2 = { volume: '0.2635', active: false };
+ethUsdtPrices[35].fp2 = { volume: '0.0001', active: false };
+ethUsdtPrices[36].fp2 = { volume: '1.6021', active: false };
+ethUsdtPrices[37].fp2 = { volume: '0.5392', active: false };
+ethUsdtPrices[38].fp2 = { volume: '0.0372', active: false };
+ethUsdtPrices[39].fp2 = { volume: '8.3983', active: true };
 
-ethUsdtPrices[22].bubbles = [{ size: '0.00', isBuy: false }, { size: '0.01', isBuy: false }, { size: '0.155', isBuy: false }, { size: '12.3134', isBuy: false }];
-ethUsdtPrices[23].bubbles = [{ size: '0.00', isBuy: true }];
+export const ethUsdtTicks: Tick[] = [
+  { price: '1,973.70', size: '0.00', isBuy: false, time: 1 },
+  { price: '1,973.70', size: '0.01', isBuy: false, time: 2 },
+  { price: '1,973.70', size: '0.155', isBuy: false, time: 3 },
+  { price: '1,973.70', size: '12.3134', isBuy: false, time: 4 },
+  { price: '1,973.65', size: '0.00', isBuy: true, time: 5 },
+];
 
 export const ethUsdtSwapCandles: Candle[] = [
   { time: '12:10', open: 1968, high: 1969, low: 1966, close: 1967, volume: 100, isUp: false },

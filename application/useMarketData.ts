@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { IMarketDataService } from '../domain/interfaces';
 import { MarketData, Candle } from '../domain/types';
-import { MockMarketDataService } from '../infrastructure/MockMarketDataService';
+import { RealMarketDataService } from '../infrastructure/RealMarketDataService';
 
-const marketDataService: IMarketDataService = new MockMarketDataService();
+const marketDataService: IMarketDataService = new RealMarketDataService();
 
 export function useMarketData(symbol: string) {
   const [data, setData] = useState<MarketData | null>(null);

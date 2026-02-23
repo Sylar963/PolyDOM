@@ -1,3 +1,15 @@
+export interface Footprint {
+  volume: string;
+  active: boolean;
+}
+
+export interface FootprintStats {
+  totalVolume: string;
+  delta: string;
+  isDeltaPositive: boolean;
+  time: string;
+}
+
 export interface PriceLevel {
   p: string; // price
   s: string; // size
@@ -5,14 +17,23 @@ export interface PriceLevel {
   isAsk?: boolean;
   h?: boolean; // highlight (yellow text)
   bar: number; // percentage for background volume bar
-  wo1?: { size: string; active: boolean }; // working order column 1
-  wo2?: { size: string; active: boolean }; // working order column 2
-  bubbles?: { size: string; isBuy: boolean }[]; // trade bubbles
+  fp1?: Footprint; // footprint column 1
+  fp2?: Footprint; // footprint column 2
+}
+
+export interface Tick {
+  price: string;
+  size: string;
+  isBuy: boolean;
+  time: number; // timestamp or relative X position
 }
 
 export interface MarketData {
   symbol: string;
   prices: PriceLevel[];
+  ticks?: Tick[];
+  fp1Stats?: FootprintStats;
+  fp2Stats?: FootprintStats;
 }
 
 export interface Candle {
