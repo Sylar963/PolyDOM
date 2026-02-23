@@ -1,0 +1,5 @@
+{
+  "name": "Polymarket DOM Terminal",
+  "description": "A Depth of Market (DOM) terminal for Polymarket Binary Options, featuring order book visualization and price charts.",
+  "requestFramePermissions": []
+}
